@@ -34,17 +34,17 @@
 //          x-axis: samples: sample_values
 //    
 
+// Pseudo Code:
+// 1. Pull required data out of json and into variables using map
+// 2. Use plotly to build charts
+// 3. Configure on change event with dropdowm
 
 
 
-
+// Set path to json data file
 var filepath = "../samples.json"
 
-
-
-
-
-
+// Create function to 
 function importData() {
 
     d3.json(filepath).then(function (data) {
