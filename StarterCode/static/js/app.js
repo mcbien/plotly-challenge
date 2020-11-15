@@ -6,7 +6,7 @@
 //          metadata = array of objects
 //              object keys: id, ethnicity, gender, age, location, bbtype, wfreq
 //          samples = array of objects contaning arrays
-//              object keys: id. otu_ids, sample_values, otu_labels
+//              object keys: id, otu_ids, sample_values, otu_labels
 
 
 // Review of screenshots:
@@ -36,7 +36,8 @@
 
 // Pseudo Code:
 // 1. Pull required data out of json and into variables using map
-// 2. Use plotly to build charts
+// 2. Filter data based on id entered.  Note: id is a key in 
+// 2. Use plotly to build charts Note: will need to cast metadata: sample values as integer for graphing
 // 3. Configure on change event with dropdowm
 
 
@@ -44,7 +45,7 @@
 // Set path to json data file
 var filepath = "../samples.json"
 
-// Create function to 
+// Create function to parse the json
 function importData() {
 
     d3.json(filepath).then(function (data) {
@@ -67,21 +68,37 @@ function importData() {
         var samples = data.samples;
         console.log(samples);
 
-        //find the keys
-        console.log("Sample Keys");
-        console.log(Object.keys(samples));
-
-
-
-
-
-
         // Use map to enumerate the values within metadata
-        var Id = data.metadata.map(item => item.id);
-        console.log(Id)
+        //var metadataId = data.metadata.map(item => item.id);
+
+        var tempId = "940";
+        var sampleFilter = samples.filter(sample => sample.id === tempId);
+        console.log(sampleFilter);
+        var metadataFilter = metadata.filter(meta => meta.id === tempId);
+        console.log(metadataFilter);
+
     })
 
 }
+
+
+
+
+
+
+
+// Create function to filter data
+function filterData(id) {
+    //if idDropdown === id ...
+
+    //return something
+}
+
+
+
+
+
+
 
 
 // Call function
