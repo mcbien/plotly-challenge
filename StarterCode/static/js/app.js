@@ -79,29 +79,13 @@ function importData() {
         console.log("940 Metadata");
         console.log(metadataFilter);
 
+        //Create plotly bar chart
+
+
     })
 
 }
 
-
-
-
-
-
-
-// Create function to filter data
-function filterData(id) {
-    //if idDropdown === id ...
-
-    //return something
-}
-
-
-
-
-
-
-
-
 // Call function
 importData()
+
