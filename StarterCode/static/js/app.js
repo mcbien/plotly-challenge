@@ -73,8 +73,10 @@ function importData() {
 
         var tempId = "940";
         var sampleFilter = samples.filter(sample => sample.id === tempId);
+        console.log("940 Sample Data");
         console.log(sampleFilter);
-        var metadataFilter = metadata.filter(meta => meta.id === tempId);
+        var metadataFilter = metadata.filter(meta => meta.id.toString() === tempId);
+        console.log("940 Metadata");
         console.log(metadataFilter);
 
     })
