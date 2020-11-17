@@ -68,9 +68,37 @@ function importData() {
         var samples = data.samples;
         console.log(samples);
 
+        // Use forEach to create option for dropdown
+        // Select select element
+        var select = d3.select("#selDataset");
+        // data.names.forEach(name => {
+        //     console.log(name);
+        Object.entries(data.names).forEach(([key, value]) => {
+            console.log(key, value);
+            var option = select.append("option");
+            option.text(value);
+
+
+
+
+
+
+
+
+
+
+
+
+        })
+
+
         // Use map to enumerate the values within metadata
         //var metadataId = data.metadata.map(item => item.id);
 
+        // Grab selected id from dropdown
+
+
+        // filter data
         var tempId = "940";
         var sampleFilter = samples.filter(sample => sample.id === tempId);
         console.log("940 Sample Data");
@@ -88,4 +116,3 @@ function importData() {
 
 // Call function
 importData()
-
