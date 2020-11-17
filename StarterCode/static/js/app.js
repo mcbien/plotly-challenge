@@ -59,14 +59,14 @@ function importData() {
 
         //Break data object into component parts
         var names = data.names;
-        // console.log("Names");
-        // console.log(names);
+        console.log("Names");
+        console.log(names);
         var metadata = data.metadata;
-        // console.log("Metadata");
-        // console.log(metadata)
-        // console.log("Samples");
+        console.log("Metadata");
+        console.log(metadata)
+        console.log("Samples");
         var samples = data.samples;
-        // console.log(samples);
+        console.log(samples);
 
         // Use forEach to create option for dropdown
         // Select select element
@@ -88,14 +88,19 @@ function importData() {
 
         // filter data
         var tempId = "940";
-        var sampleFilter = samples.filter(sample => sample.id === selection);
-        console.log("Selection Sample Data");
-        console.log(sampleFilter);
-        var metadataFilter = metadata.filter(meta => meta.id.toString() === selection);
-        console.log("Selection Metadata");
-        console.log(metadataFilter);
+        var sampleFiltered = samples.filter(sample => sample.id === selection);
+        console.log("sampleFiltered");
+        console.log(sampleFiltered);
+        var metadataFiltered = metadata.filter(meta => meta.id.toString() === selection);
+        console.log("metadataFiltered");
+        console.log(metadataFiltered);
 
         //Create plotly bar chart
+
+        var otuIdsTop10 = sampleFiltered[0].otu_ids.slice(0, 10);
+        console.log(otuIdsTop10);
+        var sampleValuesTop10 = sampleFiltered[0].sample_values.slice(0, 10);
+        console.log(sampleValuesTopTen);
 
 
 
