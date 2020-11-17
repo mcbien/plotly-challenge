@@ -95,12 +95,70 @@ function importData() {
         console.log("metadataFiltered");
         console.log(metadataFiltered);
 
-        //Create plotly bar chart
+        // Isolate Sample Data chunks
+        otuIdsAll = sampleFiltered[0].otu_ids
+        console.log("sampleFiltered otu_ids");
+        console.log(otuIdsAll);
+        otuSampleValues = sampleFiltered[0].sample_values;
+        console.log("sampleFiltered sample_values");
+        console.log(otuSampleValues);
+        otuLabels = sampleFiltered[0].otu_labels;
+        console.log("sampleFiltered otu_labels");
+        console.log(otuLabels);
 
-        var otuIdsTop10 = sampleFiltered[0].otu_ids.slice(0, 10);
+        // Create plotly bar chart
+        //var otuIdsTop10 = sampleFiltered[0].otu_ids.slice(0, 10).reverse();
+        var otuIdsTop10 = otuIdsAll.slice(0, 10).reverse();
         console.log(otuIdsTop10);
-        var sampleValuesTop10 = sampleFiltered[0].sample_values.slice(0, 10);
-        console.log(sampleValuesTopTen);
+        var labels = otuIdsTop10.map(item => "OTU ID " + item);
+        console.log(labels);
+        //var sampleValuesTop10 = sampleFiltered[0].sample_values.slice(0, 10).reverse();
+        var sampleValuesTop10 = otuSampleValues.slice(0, 10).reverse();
+        console.log(sampleValuesTop10);
+
+        var hbarTrace = {
+            type: "bar",
+            orientation: "h",
+            x: sampleValuesTop10,
+            y: labels
+        };
+
+        var hbarData = [hbarTrace];
+
+        var hbarLayout = {
+            title: "Top 10 OTU IDs",
+        };
+
+        Plotly.newPlot("bar", hbarData, hbarLayout);
+
+        // Create plotly bubble chart
+
+        var bubbleTrace = {
+            x: otuIdsAll,
+            y: otuSampleValues,
+            mode: "markers",
+            marker: {
+                color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)', 'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+                size: otuSampleValues
+            }
+        }
+
+        var bubbleData = [bubbleTrace];
+
+        var bubbleLayout = {
+            title: "Sample Values by OTU ID",
+            showlegend: false
+        }
+
+        Plotly.newPlot("bubble", bubbleData, bubbleLayout)
+
+        // Create Pie Chart
+
+        // Create Demograpic Info
+
+
+
+
 
 
 
