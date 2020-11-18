@@ -136,9 +136,10 @@ function importData() {
         var bubbleTrace = {
             x: otuIdsAll,
             y: otuSampleValues,
+            text: otuLabels,
             mode: "markers",
             marker: {
-                color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)', 'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+                color: otuSampleValues,
                 size: otuSampleValues
             }
         }
@@ -147,19 +148,12 @@ function importData() {
 
         var bubbleLayout = {
             title: "Sample Values by OTU ID",
-            showlegend: false
+            showlegend: false,
+            xaxis: { title: "OTU ID" },
+            yaxis: { title: "Sample Values" }
         }
 
-        Plotly.newPlot("bubble", bubbleData, bubbleLayout)
-
-        // Create Pie Chart
-
-        // Create Demograpic Info
-
-
-
-
-
+        Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
 
     })
@@ -169,5 +163,7 @@ function importData() {
 // Call function
 importData()
 
-        // Use map to enumerate the values within metadata
-        //var metadataId = data.metadata.map(item => item.id);
+// Use map to enumerate the values within metadata
+//var metadataId = data.metadata.map(item => item.id);
+
+// Dropdown handler
