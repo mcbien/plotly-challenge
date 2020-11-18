@@ -318,7 +318,7 @@ d3.select("#selDataset").on("change", function () {
         demoData.html("");
 
         Object.entries(metadataFiltered[0]).forEach(([a, b]) => {
-            demoData.append("h6").text(`${a}: ${b}`);
+            demoData.append("h5").text(`${a}: ${b}`);
         });
 
         // Build pie chart
@@ -340,6 +340,36 @@ d3.select("#selDataset").on("change", function () {
         };
 
         Plotly.newPlot('pie', pieData, pieLayout);
+
+        // Create gauge
+        washes = metadataFiltered[0]["wfreq"];
+        console.log(washes);
+
+        var data = [
+            {
+                domain: { x: [0, 1], y: [0, 1] },
+                value: washes,
+                title: { text: "Wash Frequency" },
+                type: "indicator",
+                mode: "gauge+number",
+                // delta: { reference: 380 },
+                gauge: {
+                    axis: { range: [null, 9] },
+                    steps: [
+                        { range: [0, 4], color: "lightgray" },
+                        { range: [5, 9], color: "gray" }
+                    ],
+                    threshold: {
+                        line: { color: "red", width: 4 },
+                        thickness: 0.75,
+                        value: washes
+                    }
+                }
+            }
+        ];
+
+        var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
+        Plotly.newPlot('gauge', data, layout);
 
     })
 
