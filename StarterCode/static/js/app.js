@@ -322,8 +322,24 @@ d3.select("#selDataset").on("change", function () {
         });
 
         // Build pie chart
+        console.log("Pie Sample Values");
+        console.log(sampleValuesTop10);
+        console.log("Pie Labels");
+        console.log(otuIdsTop10);
 
+        var pieData = [{
+            values: sampleValuesTop10.reverse(),
+            labels: otuIdsTop10.reverse(),
+            type: 'pie'
+        }];
 
+        var pieLayout = {
+            title: "Top 10 OTU IDs by Percentage",
+            //height: 400,
+            //width: 500
+        };
+
+        Plotly.newPlot('pie', pieData, pieLayout);
 
     })
 
