@@ -308,6 +308,22 @@ d3.select("#selDataset").on("change", function () {
 
         Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
+        // Populate Demographic info
+        console.log("Metadata Filtered");
+        console.log(metadataFiltered);
+        console.log(metadataFiltered[0]);
+        // Select html object
+        var demoData = d3.select("#sample-metadata");
+        //Clear the html
+        demoData.html("");
+
+        Object.entries(metadataFiltered[0]).forEach(([a, b]) => {
+            demoData.append("h6").text(`${a}: ${b}`);
+        });
+
+        // Build pie chart
+
+
 
     })
 
